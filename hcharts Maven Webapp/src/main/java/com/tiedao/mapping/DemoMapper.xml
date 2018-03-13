@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tiedao.hcharts.dao.DemoDao" >
+  <resultMap id="BaseResultMap" type="com.tiedao.hcharts.pojo.Demo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="month" property="month" jdbcType="STRING" />
+    <result column="lastYear" property="lastYear" jdbcType="DAOUBLE" />
+    <result column="todayYear" property="todayYear" jdbcType="DAOUBLE" />
+  </resultMap>	
+  <sql id="Base_Column_List" >
+    id, month, lastYear, todayYear
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hcharts.time
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <!--  新加的方法结束-->
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select * from hcharts.time
+  </select>
+</mapper>
